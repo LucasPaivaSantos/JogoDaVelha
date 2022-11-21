@@ -68,7 +68,12 @@ public class JogoDaVelha {
         int vezDeJogar = 0;
         Scanner teclado = new Scanner(System.in);
         String proximaJogada = "";
-        while (!vencedorLinha(camada1, jogador1)) {
+        while ((!vencedorLinha(camada1, jogador1))
+                && (!vencedorLinha(camada1, jogador2))
+                && (!vencedorLinha(camada2, jogador1))
+                && (!vencedorLinha(camada2, jogador2))
+                && (!vencedorLinha(camada3, jogador1))
+                && (!vencedorLinha(camada3, jogador2))) {
             //  vez do primeiro jogador
             if (vezDeJogar == 0) {
                 System.out.println("Vez de " + jogador1.getNome() + "\n" + "Digite a posicao que deseja jogar no formato (linha, coluna, camada):");
