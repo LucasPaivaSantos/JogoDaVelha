@@ -10,15 +10,15 @@ package dcc025.jogodavelha;
  */
 public class Camada {
 
-    public String casas[][];
+    public char casas[][];
     private final int tamanho = 3;
 
     public Camada() {
-        casas = new String[tamanho][tamanho];
+        casas = new char[tamanho][tamanho];
         
         for (int i = 0; i < tamanho; i++) {
             for (int j = 0; j < tamanho; j++) {
-                casas[i][j] = "-";
+                casas[i][j] = '-';
             }
         }
     }
@@ -32,4 +32,10 @@ public class Camada {
         System.out.println("");
         }
     }
+
+    public int getTamanho() {
+        return tamanho;
+    }
+    
+    
 }

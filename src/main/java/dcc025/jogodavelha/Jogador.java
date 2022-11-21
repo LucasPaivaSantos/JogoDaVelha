@@ -12,10 +12,10 @@ import java.util.Scanner;
  */
 public class Jogador {
  
-    public String nome;
-    public String simbolo;
+    private String nome;
+    private char simbolo;
 
-    public Jogador(String nome, String simbolo) {
+    public Jogador(String nome, char simbolo) {
         this.nome = nome;
         this.simbolo = simbolo;
     }
@@ -25,9 +25,19 @@ public class Jogador {
         System.out.println("Digite o nome do novo jogador");
         String nomeNovoJogador = teclado.nextLine();
         System.out.println("Digite o símbolo do novo jogador");
-        String simboloNovoJogador = teclado.nextLine();
+        char simboloNovoJogador = teclado.nextLine().charAt(0);
 
         Jogador novoJogador = new Jogador(nomeNovoJogador, simboloNovoJogador);
         return novoJogador;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public char getSimbolo() {
+        return simbolo;
+    }
+    
+    
 }
