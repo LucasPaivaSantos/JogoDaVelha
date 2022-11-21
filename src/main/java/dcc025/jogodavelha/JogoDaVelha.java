@@ -20,12 +20,15 @@ public class JogoDaVelha {
             confere[i] = ' ';
         }
         for (int i = 0; i < camadaTeste.getTamanho(); i++) {
-            confere[i] = camadaTeste.casas[0][i];
+            for (int j = 0; j < camadaTeste.getTamanho(); j++) {
+
+                confere[j] = camadaTeste.casas[i][j];
+            System.out.println("no vetor confere os simbolos são: " + confere[0] + confere[1] + confere[2]);
+                if ((confere[0] == jogadorTeste.getSimbolo()) && ((confere[1] == jogadorTeste.getSimbolo()) && (confere[2] == jogadorTeste.getSimbolo()))) {
+                    vitoria = true;
+                }
+            }
         }
-        if ((confere[0] == jogadorTeste.getSimbolo()) && ((confere[1] == jogadorTeste.getSimbolo()) && (confere[2] == jogadorTeste.getSimbolo()))) {
-            vitoria = true;
-        }
-        System.out.println("no vetor confere os simbolos são: " + confere[0] + confere[1] + confere[2]);
         return vitoria;
     }
 
@@ -121,6 +124,6 @@ public class JogoDaVelha {
                 vezDeJogar = 0;
             }
         }
-        System.out.println("parabens voce venceu");
+        System.out.println("FIM DE JOGO");
     }
 }
