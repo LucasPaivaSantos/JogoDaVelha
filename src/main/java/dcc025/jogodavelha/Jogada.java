@@ -15,23 +15,21 @@ public class Jogada {
     private final Integer camada;
 
     private Jogada(String entrada) {
-        char[] coordenadas = new char[7];
-        coordenadas[0] = entrada.charAt(1);
-        coordenadas[1] = entrada.charAt(3);
-        coordenadas[2] = entrada.charAt(5);
+        String[] coordenadas = new String[3];
 
-        this.linha = Character.getNumericValue(coordenadas[0]);
-        this.coluna = Character.getNumericValue(coordenadas[1]);
-        this.camada = Character.getNumericValue(coordenadas[2]);
+        coordenadas = entrada.split(",");
+        this.linha = Integer.valueOf(coordenadas[0]);
+        this.coluna = Integer.valueOf(coordenadas[1]);
+        this.camada = Integer.valueOf(coordenadas[2]);
     }
 
     public static Jogada cria(String entrada) {
         entrada = entrada.replaceAll(" ", "");
         entrada = entrada.replace("(", "");
         entrada = entrada.replace(")", "");
-        if (!entrada.matches("\\(\\d,\\d,\\d\\)")) {
-            return null;
-        }
+//        if (!entrada.matches("\\(\\d,\\d,\\d\\)")) {
+//            return null;
+//        }
         return new Jogada(entrada);
     }
 
