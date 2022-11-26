@@ -5,6 +5,7 @@
 package dcc025.jogodavelha;
 
 import static dcc025.jogodavelha.Jogador.insereJogador;
+import static java.lang.System.exit;
 import java.util.Scanner;
 
 /**
@@ -13,41 +14,97 @@ import java.util.Scanner;
  */
 public class JogoDaVelha {
 
-    public static Boolean vencedorLinha(Camada camadaTeste, Jogador jogadorTeste) {
-        Boolean vitoria = false;
+    public static Integer vencedorLinha(Camada[] todasCamadas, Jogador jogador1, Jogador jogador2) {
+
         char[] confere = new char[3];
-        for (int i = 0; i < camadaTeste.getTamanho(); i++) {
+        for (int i = 0; i < 3; i++) {
             confere[i] = ' ';
         }
-        for (int i = 0; i < camadaTeste.getTamanho(); i++) {
-            for (int j = 0; j < camadaTeste.getTamanho(); j++) {
+        for (int k = 0; k < 3; k++) {
+            for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < 3; i++) {
 
-                confere[j] = camadaTeste.casas[i][j];
-            System.out.println("no vetor confere os simbolos são: " + confere[0] + confere[1] + confere[2]);
-                if ((confere[0] == jogadorTeste.getSimbolo()) && ((confere[1] == jogadorTeste.getSimbolo()) && (confere[2] == jogadorTeste.getSimbolo()))) {
-                    vitoria = true;
+                    confere[i] = todasCamadas[k].casas[j][i];
+//                    System.out.println("no vetor confere os simbolos são: " + confere[0] + confere[1] + confere[2]);
+                    if ((confere[0] == jogador1.getSimbolo()) && ((confere[1] == jogador1.getSimbolo()) && (confere[2] == jogador1.getSimbolo()))) {
+                        return 1;
+                    } else if ((confere[0] == jogador2.getSimbolo()) && ((confere[1] == jogador2.getSimbolo()) && (confere[2] == jogador2.getSimbolo()))) {
+                        return 2;
+                    }
                 }
             }
         }
-        return vitoria;
+        return 0;
     }
 
-    /*public Boolean vencedorColuna(){    //camada
-        
-    }
-    public Boolean vencedorDiagonalPrincipal(){ //camada
-        
-    }
-    public Boolean vencedorDiagonalSecundaria(){    //camada
-        
-    }
-    public Boolean verificaVencedor(){ //matriz
-        for(int camada; camada < 3;){
-            for(int coluna){
-                for(int linha)
+    public static Integer vencedorColuna(Camada[] todasCamadas, Jogador jogador1, Jogador jogador2) {
+        char[] confere = new char[3];
+        for (int i = 0; i < 3; i++) {
+            confere[i] = ' ';
+        }
+        for (int k = 0; k < 3; k++) {
+            for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < 3; i++) {
+
+                    confere[i] = todasCamadas[k].casas[i][j];
+//                System.out.println("no vetor confere os simbolos são: " + confere[0] + confere[1] + confere[2]);
+                    if ((confere[0] == jogador1.getSimbolo()) && ((confere[1] == jogador1.getSimbolo()) && (confere[2] == jogador1.getSimbolo()))) {
+                        return 1;
+                    } else if ((confere[0] == jogador2.getSimbolo()) && ((confere[1] == jogador2.getSimbolo()) && (confere[2] == jogador2.getSimbolo()))) {
+                        return 2;
+                    }
+                }
             }
         }
-    }*/
+        return 0;
+    }
+
+    public static Integer vencedorDiagonalPrincipal(Camada[] todasCamadas, Jogador jogador1, Jogador jogador2) {
+        char[] confere = new char[3];
+        for (int i = 0; i < 3; i++) {
+            confere[i] = ' ';
+        }
+        for (int k = 0; k < 3; k++) {
+            for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < 3; i++) {
+
+                    confere[i] = todasCamadas[k].casas[i][i];
+//                System.out.println("no vetor confere os simbolos são: " + confere[0] + confere[1] + confere[2]);
+                    if ((confere[0] == jogador1.getSimbolo()) && ((confere[1] == jogador1.getSimbolo()) && (confere[2] == jogador1.getSimbolo()))) {
+                        return 1;
+                    } else if ((confere[0] == jogador2.getSimbolo()) && ((confere[1] == jogador2.getSimbolo()) && (confere[2] == jogador2.getSimbolo()))) {
+                        return 2;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
+    public static Integer vencedorDiagonalSecundaria(Camada[] todasCamadas, Jogador jogador1, Jogador jogador2) {
+        char[] confere = new char[3];
+        for (int i = 0; i < 3; i++) {
+            confere[i] = ' ';
+        }
+        for (int k = 0; k < 3; k++) {
+            for (int j = 0; j < 3; j++) {
+                for (int i = 0; i < 3; i++) {
+
+                    if (i + j == 3 - 1) {
+                        confere[i] = todasCamadas[k].casas[j][i];
+                    }
+//                System.out.println("no vetor confere os simbolos são: " + confere[0] + confere[1] + confere[2]);
+                    if ((confere[0] == jogador1.getSimbolo()) && ((confere[1] == jogador1.getSimbolo()) && (confere[2] == jogador1.getSimbolo()))) {
+                        return 1;
+                    } else if ((confere[0] == jogador2.getSimbolo()) && ((confere[1] == jogador2.getSimbolo()) && (confere[2] == jogador2.getSimbolo()))) {
+                        return 2;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
     public static void imprimePartida(Camada camada1, Camada camada2, Camada camada3) {
         System.out.println("-Camada 1-");
         camada1.imprimeCamada();
@@ -58,9 +115,14 @@ public class JogoDaVelha {
     }
 
     public static void main(String[] args) {
+        Camada[] todasCamadas = new Camada[3];
         Camada camada1 = new Camada();
         Camada camada2 = new Camada();
         Camada camada3 = new Camada();
+        todasCamadas[0] = camada1;
+        todasCamadas[1] = camada2;
+        todasCamadas[2] = camada3;
+
         imprimePartida(camada1, camada2, camada3);
 
         Jogador jogador1 = new Jogador("bot", 'X');
@@ -71,14 +133,20 @@ public class JogoDaVelha {
         int vezDeJogar = 0;
         Scanner teclado = new Scanner(System.in);
         String proximaJogada = "";
-        while ((!vencedorLinha(camada1, jogador1))
-                && (!vencedorLinha(camada1, jogador2))
-                && (!vencedorLinha(camada2, jogador1))
-                && (!vencedorLinha(camada2, jogador2))
-                && (!vencedorLinha(camada3, jogador1))
-                && (!vencedorLinha(camada3, jogador2))) {
-            //  vez do primeiro jogador
+        while ((vencedorLinha(todasCamadas, jogador1, jogador2) == 0)
+                && (vencedorLinha(todasCamadas, jogador1, jogador2) == 0)
+                && (vencedorDiagonalPrincipal(todasCamadas, jogador1, jogador2) == 0)
+                && (vencedorDiagonalSecundaria(todasCamadas, jogador1, jogador2) == 0)) {
+
+//  vez do primeiro jogador
             if (vezDeJogar == 0) {
+                if (vencedorLinha(todasCamadas, jogador1, jogador2) == 1) {
+                    System.out.println("PARABÉNS!! " + jogador1.getNome() + " você venceu!");
+                    return;
+                } else if (vencedorLinha(todasCamadas, jogador1, jogador2) == 2) {
+                    System.out.println("PARABÉNS!! " + jogador2.getNome() + " você venceu!");
+                    return;
+                }
                 System.out.println("Vez de " + jogador1.getNome() + "\n" + "Digite a posicao que deseja jogar no formato (linha, coluna, camada):");
                 proximaJogada = teclado.nextLine();
                 Jogada jogada = Jogada.cria(proximaJogada);
@@ -102,6 +170,13 @@ public class JogoDaVelha {
             }
             //  vez do segundo jogador
             if (vezDeJogar == 1) {
+                if (vencedorLinha(todasCamadas, jogador1, jogador2) == 1) {
+                    System.out.println("PARABÉNS!! " + jogador1.getNome() + " você venceu!");
+                    return;
+                } else if (vencedorLinha(todasCamadas, jogador1, jogador2) == 2) {
+                    System.out.println("PARABÉNS!! " + jogador2.getNome() + " você venceu!");
+                    return;
+                }
                 System.out.println("Vez de " + jogador2.getNome() + "\n" + "Digite a posicao que deseja jogar no formato (linha, coluna, camada):");
                 proximaJogada = teclado.nextLine();
                 Jogada jogada = Jogada.cria(proximaJogada);

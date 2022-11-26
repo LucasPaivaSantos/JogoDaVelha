@@ -27,6 +27,8 @@ public class Jogada {
 
     public static Jogada cria(String entrada) {
         entrada = entrada.replaceAll(" ", "");
+        entrada = entrada.replace("(", "");
+        entrada = entrada.replace(")", "");
         if (!entrada.matches("\\(\\d,\\d,\\d\\)")) {
             return null;
         }
