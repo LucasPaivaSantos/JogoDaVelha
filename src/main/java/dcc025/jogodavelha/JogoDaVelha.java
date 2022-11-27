@@ -5,7 +5,6 @@
 package dcc025.jogodavelha;
 
 import static dcc025.jogodavelha.Jogador.insereJogador;
-import static java.lang.System.exit;
 import java.util.Scanner;
 
 /**
@@ -114,6 +113,18 @@ public class JogoDaVelha {
         camada3.imprimeCamada();
     }
 
+//    public static Boolean posicaoLivre(Camada[] todasCamadas) {
+//        for (int k = 0; k < 3; k++) {
+//            for (int j = 0; j < 3; j++) {
+//                for (int i = 0; i < 3; i++) {
+//                    if (todasCamadas[k].casas[i][j] == '-') {
+//                        return true;
+//                    }
+//                }
+//            }
+//        }
+//        return false;
+//    }
     public static void main(String[] args) {
         Camada[] todasCamadas = new Camada[3];
         Camada camada1 = new Camada();
@@ -154,13 +165,25 @@ public class JogoDaVelha {
                         + " linha: " + jogada.getLinha() + " coluna: " + jogada.getColuna() + " camada: " + jogada.getCamada());
                 switch (jogada.getCamada()) {
                     case 1:
-                        camada1.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador1.getSimbolo();
+                        if (camada1.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] == '-') {
+                            camada1.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador1.getSimbolo();
+                        } else {
+                            System.out.println("\n\nPosicao ocupada!");
+                        }
                         break;
                     case 2:
-                        camada2.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador1.getSimbolo();
+                        if (camada2.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] == '-') {
+                            camada2.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador1.getSimbolo();
+                        } else {
+                            System.out.println("\n\nPosicao ocupada!");
+                        }
                         break;
                     case 3:
-                        camada3.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador1.getSimbolo();
+                        if (camada3.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] == '-') {
+                            camada3.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador1.getSimbolo();
+                        } else {
+                            System.out.println("\n\nPosicao ocupada!");
+                        }
                         break;
                     default:
                         break;
@@ -184,13 +207,25 @@ public class JogoDaVelha {
                         + " linha: " + jogada.getLinha() + " coluna: " + jogada.getColuna() + " camada: " + jogada.getCamada());
                 switch (jogada.getCamada()) {
                     case 1:
-                        camada1.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador2.getSimbolo();
+                        if (camada1.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] == '-') {
+                            camada1.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador2.getSimbolo();
+                        } else {
+                            System.out.println("\n\nPosicao ocupada!");
+                        }
                         break;
                     case 2:
-                        camada2.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador2.getSimbolo();
+                        if (camada2.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] == '-') {
+                            camada2.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador2.getSimbolo();
+                        } else {
+                            System.out.println("\n\nPosicao ocupada!");
+                        }
                         break;
                     case 3:
-                        camada3.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador2.getSimbolo();
+                        if (camada3.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] == '-') {
+                            camada3.casas[jogada.getLinha() - 1][jogada.getColuna() - 1] = jogador2.getSimbolo();
+                        } else {
+                            System.out.println("\n\nPosicao ocupada!");
+                        }
                         break;
                     default:
                         break;
