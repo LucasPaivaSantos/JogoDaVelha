@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author lucas
  */
 public class Jogador {
- 
+
     private String nome;
     private char simbolo;
 
@@ -19,7 +19,7 @@ public class Jogador {
         this.nome = nome;
         this.simbolo = simbolo;
     }
-    
+
     public static Jogador insereJogador() {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Digite o nome do novo jogador");
@@ -31,6 +31,14 @@ public class Jogador {
         return novoJogador;
     }
 
+    public static Jogador insereBot() {
+        System.out.println("Jogando contra o bot");
+        String nomeNovoJogador = "Bot";
+        char simboloNovoJogador = 'X';
+        Jogador novoJogador = new Jogador(nomeNovoJogador, simboloNovoJogador);
+        return novoJogador;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -38,6 +46,5 @@ public class Jogador {
     public char getSimbolo() {
         return simbolo;
     }
-    
-    
+
 }
